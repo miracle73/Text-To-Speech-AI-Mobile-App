@@ -10,7 +10,10 @@ import {
 export default function App() {
   const [text, setText] = React.useState("");
 
-  const handleConvert = () => {};
+  const handleConvert = () => {
+    console.log(text);
+    setText("");
+  };
 
   return (
     <View style={styles.container}>
