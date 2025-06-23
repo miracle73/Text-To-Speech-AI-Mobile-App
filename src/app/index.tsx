@@ -24,8 +24,7 @@ export default function App() {
 
     const arrayBuffer = await response.arrayBuffer();
     const uint8Array = new Uint8Array(arrayBuffer);
-    const data = await response.json();
-    console.log(data);
+
     setText("");
   };
 
