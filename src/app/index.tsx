@@ -6,6 +6,7 @@ import {
   View,
   TextInput,
 } from "react-native";
+import * as FileSystem from "expo-file-system";
 
 export default function App() {
   const [text, setText] = React.useState("");
@@ -16,6 +17,13 @@ export default function App() {
       method: "POST",
       body: JSON.stringify({ text }),
     });
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch audio");
+    }
+
+    const arrayBuffer = await response.arrayBuffer();
+    const uint8Array = new Uint8Array(arrayBuffer);
     const data = await response.json();
     console.log(data);
     setText("");
