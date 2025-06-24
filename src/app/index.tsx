@@ -8,9 +8,11 @@ import {
 } from "react-native";
 import * as FileSystem from "expo-file-system";
 import { Buffer } from "buffer";
+import AudioPlayer from "../components/AudioPlayer";
 
 export default function App() {
   const [text, setText] = React.useState("");
+  const [audioFileUri, setAudioFileUri] = React.useState("");
 
   const handleConvert = async () => {
     console.log("Starting conversion...");
@@ -41,6 +43,7 @@ export default function App() {
           encoding: FileSystem.EncodingType.Base64,
         }
       );
+      setAudioFileUri(fileUri);
     } catch (error) {
       console.error("Error occurred while saving audio file:", error);
     } finally {
@@ -60,6 +63,7 @@ export default function App() {
       <TouchableOpacity onPress={handleConvert} style={styles.button}>
         <Text style={styles.buttonText}>Convert to audio</Text>
       </TouchableOpacity>
+      {audioFileUri && <AudioPlayer uri={audioFileUri} />}
     </View>
   );
 }

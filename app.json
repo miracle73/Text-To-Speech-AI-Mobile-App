@@ -27,6 +27,14 @@
       "favicon": "./assets/favicon.png",
       "output": "server"
     },
-    "plugins": [["expo-router", { "origin": "http://localhost:8081" }]]
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "origin": "http://localhost:8081"
+        }
+      ],
+      "expo-audio"
+    ]
   }
 }
